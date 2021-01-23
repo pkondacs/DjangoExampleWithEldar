@@ -11,14 +11,14 @@
 <body>
 <div class="container" style="padding-top:60px">
     <div class="col-9">
-        <form action="{% url 'processconfig:index' %}" method="POST">{% csrf_token %}
+        <form action="{% url 'processconfig:index' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Project Name</span>
                 <input type="text" class="form-control" name="project_name" id="project_name">
             </div>
             <div class="mb-3">
                 <label for="sas_program" class="form-label">Multiple files input example</label>
-                <input class="form-control" type="file" name="sas_program" id="sas_program">
+                <input class="form-control" type="file" name="sas_program" id="sas_program" multiple>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

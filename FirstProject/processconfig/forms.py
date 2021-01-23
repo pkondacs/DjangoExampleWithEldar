@@ -1,11 +1,10 @@
-from django.forms import ModelForm
+from django import forms
 from . import models
 
 
-class FileUploadForm(ModelForm):
-    class Meta:
-        model = models.ProcessFlows
-        fields = [
-            "project_name",
-            "sas_program"
-        ]
+class FileUploadForm(forms.Form):
+    sas_program = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+
+
+class FileUploadWithProjectNameForm(FileUploadForm):
+    project_name = forms.CharField(max_length=100)
