@@ -2,8 +2,10 @@ from django.http import HttpResponse
 from django.views import View
 from django.shortcuts import render, redirect, reverse
 from django.template import loader
+from django.db.models import Max
 from . import forms
 from . import models
+
 
 class FileConfigurationView(View):
     def get(self, request, *args, **kwargs):
@@ -13,7 +15,9 @@ class FileConfigurationView(View):
 
     def post(self, request, *args, **kwargs):
         form = forms.FileUploadWithProjectNameForm(request.POST, request.FILES)
-        table = None
+        files = None
+        project_name = None
+        flows = 0
         if form.is_valid():
             project_name = models.ProcessFlows.objects.create(
                 project_name=request.POST["project_name"]
@@ -25,5 +29,8 @@ class FileConfigurationView(View):
                     sas_program_name=file
                 )
                 project_name.sas_program.add(new_file)
-            table = project_name.sas_program.all()
-        return render(request, "sas_config.html", context={"table": table})
+            files = project_name.sas_program.all()
+            flows = files.aggregate(max_flow=Max('process_flow_int')) + 1
+        return render(request, "sas_config.html", context={
+            "files": files, "project": project_name, "flows": flows["max_flows"]
+        })

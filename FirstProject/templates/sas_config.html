@@ -1,34 +1,49 @@
 {% extends 'base.html' %}
 {% block content %}
-<form action="{% url 'processconfig:index' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Project Name</span>
-            <input type="text" class="form-control" name="project_name" id="project_name">
-        </div>
-        <div class="mb-3">
-            <label for="sas_program" class="form-label">Multiple files input example</label>
-            <input class="form-control" type="file" name="sas_program" id="sas_program" multiple>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        {% if table is not None %}
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Order #</th>
-                  <th scope="col">File Name</th>
-                  <th scope="col">.</th>
-                </tr>
-              </thead>
-                <tbody>
-                {% for row in table %}
-                    <tr>
-                      <th scope="row">{{ row.order_number }}</th>
-                      <td>{{ row.sas_program_name }}</td>
-                      <td><a class="btn btn-delete btn-danger">Delete</a></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        {% endif %}
-    </form>
+    {% if project_name is None %}
+        <form action="{% url 'processconfig:index' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Project Name</span>
+                    <input type="text" class="form-control" name="project_name" id="project_name">
+                </div>
+                <div class="mb-3">
+                    <label for="sas_program" class="form-label">Multiple files input example</label>
+                    <input class="form-control" type="file" name="sas_program" id="sas_program" multiple>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    {% else %}
+        <form action="{% url 'processconfig:index' %}" method="PUT" enctype="multipart/form-data">{% csrf_token %}
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Project Name</span>
+                    <input type="text" class="form-control" name="project_name" id="project_name">
+                </div>
+                <div class="mb-3">
+                    <label for="sas_program" class="form-label">Multiple files input example</label>
+                    <input class="form-control" type="file" name="sas_program" id="sas_program" multiple>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    {% endif %}
+{% if table is not None %}
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Order #</th>
+          <th scope="col">File Name</th>
+          <th scope="col">.</th>
+        </tr>
+      </thead>
+        <tbody>
+        {% for row in table %}
+            <tr>
+              <th scope="row">{{ row.order_number }}</th>
+              <td>{{ row.sas_program_name }}</td>
+              <td><a class="btn btn-delete btn-danger">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
 {% endblock content %}
