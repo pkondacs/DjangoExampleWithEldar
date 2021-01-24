@@ -7,12 +7,13 @@ from . import models
 
 class FileConfigurationView(View):
     def get(self, request, *args, **kwargs):
-        template = loader.get_template("main.html")
+        template = loader.get_template("sas_config.html")
         context = {}
         return HttpResponse(template.render(context, request))
 
     def post(self, request, *args, **kwargs):
         form = forms.FileUploadWithProjectNameForm(request.POST, request.FILES)
+        table = None
         if form.is_valid():
             project_name = models.ProcessFlows.objects.create(
                 project_name=request.POST["project_name"]
@@ -24,4 +25,5 @@ class FileConfigurationView(View):
                     sas_program_name=file
                 )
                 project_name.sas_program.add(new_file)
-        return render(request, "main.html", context={})
+            table = project_name.sas_program.all()
+        return render(request, "sas_config.html", context={"table": table})
