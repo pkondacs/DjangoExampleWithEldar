@@ -2,6 +2,7 @@ from django.urls import path
 
 from . import views
 
+app_name = "processconfig"
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.FileConfigurationView.as_view(), name='index'),
 ]
