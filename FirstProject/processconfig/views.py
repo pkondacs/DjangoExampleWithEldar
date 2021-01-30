@@ -39,6 +39,7 @@ class FileConfigurationForProjectView(View):
         flows = project.flows.all()
         context = {
             "flows": flows,
+            "project": project,
             "pk": kwargs.get("pk"),
         }
         return HttpResponse(template.render(context, request))
