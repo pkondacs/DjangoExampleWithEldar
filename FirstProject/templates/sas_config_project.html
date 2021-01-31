@@ -15,7 +15,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         {% if i.sas_programs.all|length > 0 %}
-            <table class="table table-hover">
+            <table class="table table-hover" id="flow_table{{ i.id }}">
               <thead>
                 <tr>
                   <th scope="col">Order #</th>
