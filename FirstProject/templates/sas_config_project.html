@@ -26,7 +26,7 @@
                 <tbody>
                 {% for file in i.sas_programs.all %}
                     <tr>
-                      <th scope="row">{{ file.order_number }}</th>
+                      <th scope="row" class="priority">{{ file.order_number }}</th>
                       <td>{{ file.sas_program_name }}</td>
                       <td><a class="btn btn-delete btn-danger">Delete</a></td>
                     </tr>
