@@ -24,11 +24,11 @@
                 </tr>
               </thead>
                 <tbody>
-                {% for file in i.sas_programs.all %}
+                {% for file in i.sas_programs.all|dictsort:"order_number" %}
                     <tr>
-                      <th scope="row" class="priority">{{ file.order_number }}</th>
+                      <th scope="row" class="priority" id="{{ file.id }}">{{ file.order_number }}</th>
                       <td>{{ file.sas_program_name }}</td>
-                      <td><a class="btn btn-delete btn-danger">Delete</a></td>
+                      <td><a class="btn btn-delete btn-danger" id="{{ file.id }}">Delete</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

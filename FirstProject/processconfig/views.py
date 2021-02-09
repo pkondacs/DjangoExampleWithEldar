@@ -1,11 +1,11 @@
 from django.http import HttpResponse
-from django.views import View
+from django.views import View, generic
 from django.shortcuts import render, redirect, reverse
 from django.template import loader
 from django.db.models import Max
 from . import forms
 from . import models
-
+import json
 
 class FileConfigurationView(View):
     def get(self, request, *args, **kwargs):
@@ -78,3 +78,23 @@ class CreateFlowView(View):
                 )
                 flow.sas_programs.add(new_file)
         return redirect(reverse('processconfig:project', kwargs={"pk": kwargs.get("pk")}))
+
+
+class FileDeleteView(generic.DeleteView):
+    model = models.SASPrograms
+    queryset = model.objects.all()
+
+    def delete(self, request, *args, **kwargs):
+        file = self.get_object()
+        file.delete()
+        return HttpResponse({"response": "deleted"})
+
+
+class ChangeSASProgramOrderView(View):
+
+    def post(self, request, *args, **kwargs):
+        for element in json.load(request):
+            sas_program = models.SASPrograms.objects.get(id=element.get("id"))
+            sas_program.order_number = element.get("order_number")
+            sas_program.save()
+        return HttpResponse("changed")
