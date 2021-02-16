@@ -16,6 +16,7 @@ class SASPrograms(models.Model):
 
 class ProgramFlows(models.Model):
     flow_order_number = models.IntegerField(default=0)
+    flow_name = models.IntegerField(default="")
     sas_programs = models.ManyToManyField(SASPrograms, blank=True)
 
     class Meta:
