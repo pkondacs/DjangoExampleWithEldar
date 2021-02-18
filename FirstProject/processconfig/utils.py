@@ -1,7 +1,7 @@
 from .models import ProcessFlows
 from .egp_package_web import *
 import pandas as pd
-from FirstProject.settings import *
+from django.conf.global_settings import *
 import os
 
 
