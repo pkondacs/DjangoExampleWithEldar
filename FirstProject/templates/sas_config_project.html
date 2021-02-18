@@ -8,9 +8,13 @@
     </form>
     {% for i in flows %}
         <form action="{% url 'processconfig:update_flow' i.id %}" enctype="multipart/form-data" method="POST">{% csrf_token %}
+            <div class="input-group mb-3">
+                <span class="input-group-text">Flow name</span>
+                <input type="text" class="form-control" name="flow_name" value="{{ i.flow_name }}">
+            </div>
             <div class="mb-3">
                 <label for="sas_program" class="form-label">Multiple files input example</label>
-                <input class="form-control" type="file" name="sas_program" id="sas_program" multiple>
+                <input class="form-control" type="file" name="sas_program" multiple>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -36,10 +40,17 @@
         {% endif %}
     {% endfor %}
     <form action="{% url 'processconfig:create_flow' pk %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="input-group mb-3">
+            <span class="input-group-text">Flow name</span>
+            <input type="text" class="form-control" name="flow_name">
+        </div>
         <div class="mb-3">
             <label for="sas_program" class="form-label">Multiple files input example</label>
-            <input class="form-control" type="file" name="sas_program" id="sas_program" multiple>
+            <input class="form-control" type="file" name="sas_program" multiple>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <form action="{% url 'processconfig:generate_file' pk %}" method="POST">{% csrf_token %}
+        <button type="submit" class="btn btn-primary">Generate File</button>
     </form>
 {% endblock content %}
