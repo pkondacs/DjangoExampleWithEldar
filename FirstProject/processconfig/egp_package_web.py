@@ -76,7 +76,8 @@ def creteEGPStructure(module, modulePath, scriptListPath, templatePath):
         os.mkdir(targetLevel2)
 
         # Copy script
-        sourceFileName = os.path.join(scriptPath, script + '.sas')
+        # sourceFileName = os.path.join(scriptPath, script + '.sas')
+        sourceFileName = os.path.join(scriptPath, script)
         targetFileName = os.path.join(targetLevel2, 'code.sas')
         shutil.copyfile(sourceFileName, targetFileName)
 
@@ -258,6 +259,8 @@ def createEGP(module, basePath):
     """Create EGP - zip structure folder and change extension"""
 
     # Read EGP structure
+    basePath = basePath
+    xmlFileName = 'project.xml'
     modulePath = os.path.join(basePath, module)
     scriptListPath = os.path.join(basePath, '00_EGP_Packager', module + '.csv')
     templatePath = os.path.join(basePath, '00_EGP_Packager', 'IRBMA_Template_Project')
@@ -266,7 +269,7 @@ def createEGP(module, basePath):
     print('Creating structure...')
     creteEGPStructure(
         module=module,
-        modulePath=modulePath,
+        modulePath=basePath,
         scriptListPath=scriptListPath,
         templatePath=templatePath)
 
@@ -274,7 +277,7 @@ def createEGP(module, basePath):
     print('Writing xml...')
     xmlParsing(
         module=module,
-        modulePath=modulePath,
+        modulePath=basePath,
         templatePath=templatePath,
         xmlFileName=xmlFileName,
         scriptListPath=scriptListPath
@@ -283,7 +286,7 @@ def createEGP(module, basePath):
     # Make EGP file
     print('Encapsulating in egp...')
     zipModExt(
-        path=os.path.join(modulePath, module)
+        path=os.path.join(basePath, module)
     )
 
 
