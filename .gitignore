@@ -1,4 +1,4 @@
 venv/*
 .idea/*
-FirstProject/db.sqlite3
+/FirstProject/db.sqlite3
 FirstProject/files/*

@@ -1,4 +1,4 @@
-from django.http import HttpResponse, FileResponse
+from django.http import HttpResponse, FileResponse, JsonResponse
 from django.views import View, generic
 from django.shortcuts import render, redirect, reverse
 from django.template import loader
@@ -91,8 +91,13 @@ class FileDeleteView(generic.DeleteView):
 
     def delete(self, request, *args, **kwargs):
         file = self.get_object()
+        program_flow = models.ProgramFlows.objects.get(sas_programs=file)
         file.delete()
-        return HttpResponse({"response": "deleted"})
+        if program_flow.sas_programs.all().count() == 0:
+            project = models.ProcessFlows.objects.get(flows=program_flow)
+            program_flow.delete()
+            return JsonResponse({"response": "refresh"})
+        return JsonResponse({"response": "deleted"})
 
 
 class ChangeSASProgramOrderView(View):
@@ -106,6 +111,6 @@ class ChangeSASProgramOrderView(View):
 
 
 class GenerateFile(View):
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         file = get_table(kwargs.get("pk"))
         return FileResponse(file, as_attachment=True)

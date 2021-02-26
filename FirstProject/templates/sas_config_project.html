@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+
     <form action="#" enctype="multipart/form-data">{% csrf_token %}
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Project Name</span>
@@ -7,50 +8,67 @@
         </div>
     </form>
     {% for i in flows %}
-        <form action="{% url 'processconfig:update_flow' i.id %}" enctype="multipart/form-data" method="POST">{% csrf_token %}
-            <div class="input-group mb-3">
-                <span class="input-group-text">Flow name</span>
-                <input type="text" class="form-control" name="flow_name" value="{{ i.flow_name }}">
-            </div>
-            <div class="mb-3">
-                <label for="sas_program" class="form-label">Multiple files input example</label>
-                <input class="form-control" type="file" name="sas_program" multiple>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        {% if i.sas_programs.all|length > 0 %}
-            <table class="table table-hover" id="flow_table{{ i.id }}">
-              <thead>
-                <tr>
-                  <th scope="col">Order #</th>
-                  <th scope="col">File Name</th>
-                  <th scope="col">.</th>
-                </tr>
-              </thead>
-                <tbody>
-                {% for file in i.sas_programs.all|dictsort:"order_number" %}
+        <div class="card">
+            <div class="card-body">
+            <form action="{% url 'processconfig:update_flow' i.id %}" enctype="multipart/form-data" method="POST">{% csrf_token %}
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Flow name</span>
+                    <input type="text" class="form-control" name="flow_name" value="{{ i.flow_name }}">
+                </div>
+                <div class="mb-3">
+                    <label for="sas_program" class="form-label">Click here to choose files.</label>
+                    <input class="form-control" type="file" name="sas_program" multiple>
+                </div>
+                <button type="submit" class="btn btn-primary">Add files</button>
+            </form>
+            {% if i.sas_programs.all|length > 0 %}
+                <table class="table table-hover" id="flow_table{{ i.id }}">
+                  <thead>
                     <tr>
-                      <th scope="row" class="priority" id="{{ file.id }}">{{ file.order_number }}</th>
-                      <td>{{ file.sas_program_name }}</td>
-                      <td><a class="btn btn-delete btn-danger" id="{{ file.id }}">Delete</a></td>
+                      <th scope="col">Order #</th>
+                      <th scope="col">File Name</th>
+                      <th scope="col">.</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        {% endif %}
+                  </thead>
+                    <tbody>
+                    {% for file in i.sas_programs.all|dictsort:"order_number" %}
+                        <tr>
+                          <th scope="row" class="priority" id="{{ file.id }}">{{ file.order_number }}</th>
+                          <td>{{ file.sas_program_name }}</td>
+                          <td><a class="btn btn-delete btn-danger" id="{{ file.id }}">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+
+        </div>
     {% endfor %}
-    <form action="{% url 'processconfig:create_flow' pk %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
-        <div class="input-group mb-3">
-            <span class="input-group-text">Flow name</span>
-            <input type="text" class="form-control" name="flow_name">
+
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="collapse" id="collapseExample">
+
+                <form action="{% url 'processconfig:create_flow' pk %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Flow name</span>
+                        <input type="text" class="form-control" name="flow_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="sas_program" class="form-label">Click here to choose files.</label>
+                        <input class="form-control" type="file" name="sas_program" multiple>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add files</button>
+
+                </form>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="sas_program" class="form-label">Multiple files input example</label>
-            <input class="form-control" type="file" name="sas_program" multiple>
+        <div class="card-body">
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Add new flow
+            </button>
+            <a href="{% url 'processconfig:generate_file' pk %}" class="btn btn-primary">Generate configuration</a>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <form action="{% url 'processconfig:generate_file' pk %}" method="POST">{% csrf_token %}
-        <button type="submit" class="btn btn-primary">Generate File</button>
-    </form>
+    </div>
 {% endblock content %}
