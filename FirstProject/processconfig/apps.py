@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class ProcessconfigConfig(AppConfig):
+class ProcessfconfigConfig(AppConfig):
     name = 'processconfig'
