@@ -3,4 +3,5 @@ from . import models
 # Register your models here.
 
 admin.site.register(models.SASPrograms)
+admin.site.register(models.ProgramFlows)
 admin.site.register(models.ProcessFlows)
