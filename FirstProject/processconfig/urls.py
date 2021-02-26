@@ -10,4 +10,5 @@ urlpatterns = [
     path('<int:pk>/create/', views.CreateFlowView.as_view(), name='create_flow'),
     path('sas_program/delete/<int:pk>/', views.FileDeleteView.as_view(), name='sas_program_delete'),
     path('sas_program/change_order/', views.ChangeSASProgramOrderView.as_view(), name="change_order"),
+    path('generate/<int:pk>/', views.GenerateFile.as_view(), name="generate_file"),
 ]

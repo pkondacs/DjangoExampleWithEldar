@@ -62,9 +62,19 @@ delete_sas_program = async (sas_program_id) => {
 			'X-Requested-With': 'XMLHttpRequest',
         	"X-CSRFToken": csrftoken
 		}
-	}).then(response => console.log("Deleted"))
+	}).then(response => response.json())
+		.then(data => refresh_page(data))
 		.catch((error => console.log(error)))
+}
 
+refresh_page = (response) => {
+	if (response.response === "refresh"){
+		console.log(response)
+		location.reload()
+	}
+	else{
+		console.log(response)
+	}
 }
 
 function getCookie(name) {

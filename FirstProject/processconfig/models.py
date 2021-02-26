@@ -16,6 +16,7 @@ class SASPrograms(models.Model):
 
 class ProgramFlows(models.Model):
     flow_order_number = models.IntegerField(default=0)
+    flow_name = models.CharField(default="", max_length=250)
     sas_programs = models.ManyToManyField(SASPrograms, blank=True)
 
     class Meta:
@@ -23,12 +24,13 @@ class ProgramFlows(models.Model):
         verbose_name_plural = "Flows number"
 
     def __str__(self):
-        return f"{self.flow_order_number} with {self.sas_programs.all().count()}"
+        return f"{self.flow_name} with {self.sas_programs.all().count()}"
 
 
 class ProcessFlows(models.Model):
     project_name = models.CharField(max_length=100, default="")
     flows = models.ManyToManyField(ProgramFlows, blank=True)
+    zip_file = models.FileField(blank=True, null=True)
 
     class Meta:
         verbose_name = "Process Flow"

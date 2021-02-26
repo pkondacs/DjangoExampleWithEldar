@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse, JsonResponse
 from django.views import View, generic
 from django.shortcuts import render, redirect, reverse
 from django.template import loader
@@ -6,6 +6,8 @@ from django.db.models import Max
 from . import forms
 from . import models
 import json
+from .utils import get_table
+
 
 class FileConfigurationView(View):
     def get(self, request, *args, **kwargs):
@@ -19,7 +21,9 @@ class FileConfigurationView(View):
             project_name = models.ProcessFlows.objects.create(
                 project_name=request.POST["project_name"]
             )
-            flow = models.ProgramFlows.objects.create()
+            flow = models.ProgramFlows.objects.create(
+                flow_name=request.POST["flow_name"]
+            )
             project_name.flows.add(flow)
             for i, file in enumerate(request.FILES.getlist("sas_program")):
                 new_file = models.SASPrograms.objects.create(
@@ -51,6 +55,8 @@ class FileConfigurationUpdateView(View):
         form = forms.FileUploadForm(request.POST, request.FILES)
 
         if form.is_valid():
+            flow.flow_name = request.POST.get("flow_name")
+            flow.save()
             start = flow.sas_programs.all().aggregate(max_flow=Max('order_number'))["max_flow"] + 1
             for i, file in enumerate(request.FILES.getlist("sas_program"), start=start):
                 new_file = models.SASPrograms.objects.create(
@@ -65,10 +71,9 @@ class FileConfigurationUpdateView(View):
 class CreateFlowView(View):
     def post(self, request, *args, **kwargs):
         project = models.ProcessFlows.objects.get(id=kwargs.get("pk"))
-        flow_number = project.flows.all().aggregate(max_flow=Max('flow_order_number'))['max_flow'] + 1
         form = forms.FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            flow = models.ProgramFlows.objects.create(flow_order_number=flow_number)
+            flow = models.ProgramFlows.objects.create(flow_name=request.POST.get("flow_name"))
             project.flows.add(flow)
             for i, file in enumerate(request.FILES.getlist("sas_program")):
                 new_file = models.SASPrograms.objects.create(
@@ -86,8 +91,13 @@ class FileDeleteView(generic.DeleteView):
 
     def delete(self, request, *args, **kwargs):
         file = self.get_object()
+        program_flow = models.ProgramFlows.objects.get(sas_programs=file)
         file.delete()
-        return HttpResponse({"response": "deleted"})
+        if program_flow.sas_programs.all().count() == 0:
+            project = models.ProcessFlows.objects.get(flows=program_flow)
+            program_flow.delete()
+            return JsonResponse({"response": "refresh"})
+        return JsonResponse({"response": "deleted"})
 
 
 class ChangeSASProgramOrderView(View):
@@ -98,3 +108,9 @@ class ChangeSASProgramOrderView(View):
             sas_program.order_number = element.get("order_number")
             sas_program.save()
         return HttpResponse("changed")
+
+
+class GenerateFile(View):
+    def get(self, request, *args, **kwargs):
+        file = get_table(kwargs.get("pk"))
+        return FileResponse(file, as_attachment=True)
