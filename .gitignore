@@ -2,3 +2,4 @@ venv/*
 .idea/*
 FirstProject/db.sqlite3
 FirstProject/files/*
+FirstProject/FirstProject/local_settings.py
