@@ -6,3 +6,4 @@ local_settings.py
 prod_settings.py
 
 FirstProject/files/*
+__pycache__/*
