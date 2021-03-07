@@ -1,0 +1,124 @@
+[2021-03-06 09:29:57 +0000] [26491] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 09:29:57 +0000] [26491] [INFO] Listening at: http://127.0.0.1:8000 (26491)
+[2021-03-06 09:29:57 +0000] [26491] [INFO] Using worker: sync
+[2021-03-06 09:29:57 +0000] [26494] [INFO] Booting worker with pid: 26494
+Not Found: /favicon.ico
+[2021-03-06 09:36:19 +0000] [26491] [INFO] Handling signal: term
+[2021-03-06 09:36:19 +0000] [26494] [INFO] Worker exiting (pid: 26494)
+[2021-03-06 09:36:19 +0000] [26491] [INFO] Shutting down: Master
+[2021-03-06 09:36:19 +0000] [26591] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 09:36:19 +0000] [26591] [INFO] Listening at: http://127.0.0.1:8000 (26591)
+[2021-03-06 09:36:19 +0000] [26591] [INFO] Using worker: sync
+[2021-03-06 09:36:19 +0000] [26594] [INFO] Booting worker with pid: 26594
+[2021-03-06 09:38:29 +0000] [26591] [INFO] Handling signal: term
+[2021-03-06 09:38:29 +0000] [26594] [INFO] Worker exiting (pid: 26594)
+[2021-03-06 09:38:29 +0000] [26591] [INFO] Shutting down: Master
+[2021-03-06 09:38:29 +0000] [26644] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 09:38:29 +0000] [26644] [INFO] Listening at: http://127.0.0.1:8000 (26644)
+[2021-03-06 09:38:29 +0000] [26644] [INFO] Using worker: sync
+[2021-03-06 09:38:29 +0000] [26647] [INFO] Booting worker with pid: 26647
+[2021-03-06 09:38:50 +0000] [26644] [INFO] Handling signal: term
+[2021-03-06 09:38:50 +0000] [26647] [INFO] Worker exiting (pid: 26647)
+[2021-03-06 09:38:50 +0000] [26644] [INFO] Shutting down: Master
+[2021-03-06 09:38:51 +0000] [26658] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 09:38:51 +0000] [26658] [INFO] Listening at: http://127.0.0.1:8000 (26658)
+[2021-03-06 09:38:51 +0000] [26658] [INFO] Using worker: sync
+[2021-03-06 09:38:51 +0000] [26661] [INFO] Booting worker with pid: 26661
+[2021-03-06 09:40:40 +0000] [26658] [INFO] Handling signal: term
+[2021-03-06 09:40:40 +0000] [26661] [INFO] Worker exiting (pid: 26661)
+[2021-03-06 09:40:40 +0000] [26658] [INFO] Shutting down: Master
+[2021-03-06 09:40:40 +0000] [26686] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 09:40:40 +0000] [26686] [INFO] Listening at: http://127.0.0.1:8000 (26686)
+[2021-03-06 09:40:40 +0000] [26686] [INFO] Using worker: sync
+[2021-03-06 09:40:40 +0000] [26689] [INFO] Booting worker with pid: 26689
+[2021-03-06 09:47:33 +0000] [26686] [INFO] Handling signal: term
+[2021-03-06 09:47:33 +0000] [26689] [INFO] Worker exiting (pid: 26689)
+[2021-03-06 09:47:33 +0000] [26686] [INFO] Shutting down: Master
+[2021-03-06 09:47:33 +0000] [26823] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 09:47:33 +0000] [26823] [INFO] Listening at: http://127.0.0.1:8000 (26823)
+[2021-03-06 09:47:33 +0000] [26823] [INFO] Using worker: sync
+[2021-03-06 09:47:33 +0000] [26826] [INFO] Booting worker with pid: 26826
+[2021-03-06 09:48:58 +0000] [26823] [INFO] Handling signal: term
+[2021-03-06 09:48:58 +0000] [26826] [INFO] Worker exiting (pid: 26826)
+[2021-03-06 09:48:58 +0000] [26823] [INFO] Shutting down: Master
+[2021-03-06 09:48:58 +0000] [26859] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 09:48:58 +0000] [26859] [INFO] Listening at: http://127.0.0.1:8000 (26859)
+[2021-03-06 09:48:58 +0000] [26859] [INFO] Using worker: sync
+[2021-03-06 09:48:58 +0000] [26862] [INFO] Booting worker with pid: 26862
+[2021-03-06 09:53:19 +0000] [26859] [INFO] Handling signal: term
+[2021-03-06 09:53:19 +0000] [26862] [INFO] Worker exiting (pid: 26862)
+[2021-03-06 09:53:19 +0000] [26859] [INFO] Shutting down: Master
+[2021-03-06 09:53:20 +0000] [26934] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 09:53:20 +0000] [26934] [INFO] Listening at: http://127.0.0.1:8000 (26934)
+[2021-03-06 09:53:20 +0000] [26934] [INFO] Using worker: sync
+[2021-03-06 09:53:20 +0000] [26937] [INFO] Booting worker with pid: 26937
+Not Found: /favicon.ico
+[2021-03-06 09:57:46 +0000] [26934] [INFO] Handling signal: term
+[2021-03-06 09:57:46 +0000] [26937] [INFO] Worker exiting (pid: 26937)
+[2021-03-06 09:57:46 +0000] [26934] [INFO] Shutting down: Master
+[2021-03-06 09:57:46 +0000] [27019] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 09:57:46 +0000] [27019] [INFO] Listening at: http://127.0.0.1:8000 (27019)
+[2021-03-06 09:57:46 +0000] [27019] [INFO] Using worker: sync
+[2021-03-06 09:57:46 +0000] [27022] [INFO] Booting worker with pid: 27022
+[2021-03-06 10:04:49 +0000] [27019] [INFO] Handling signal: term
+[2021-03-06 10:04:49 +0000] [27022] [INFO] Worker exiting (pid: 27022)
+[2021-03-06 10:04:49 +0000] [27019] [INFO] Shutting down: Master
+[2021-03-06 10:04:50 +0000] [27148] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 10:04:50 +0000] [27148] [INFO] Listening at: http://127.0.0.1:8000 (27148)
+[2021-03-06 10:04:50 +0000] [27148] [INFO] Using worker: sync
+[2021-03-06 10:04:50 +0000] [27151] [INFO] Booting worker with pid: 27151
+[2021-03-06 10:06:12 +0000] [27148] [INFO] Handling signal: term
+[2021-03-06 10:06:12 +0000] [27151] [INFO] Worker exiting (pid: 27151)
+[2021-03-06 10:06:13 +0000] [27148] [INFO] Shutting down: Master
+[2021-03-06 10:06:13 +0000] [27180] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 10:06:13 +0000] [27180] [INFO] Listening at: http://127.0.0.1:8000 (27180)
+[2021-03-06 10:06:13 +0000] [27180] [INFO] Using worker: sync
+[2021-03-06 10:06:13 +0000] [27183] [INFO] Booting worker with pid: 27183
+[2021-03-06 10:07:46 +0000] [27180] [INFO] Handling signal: term
+[2021-03-06 10:07:46 +0000] [27183] [INFO] Worker exiting (pid: 27183)
+[2021-03-06 10:07:46 +0000] [27180] [INFO] Shutting down: Master
+[2021-03-06 10:07:46 +0000] [27210] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 10:07:46 +0000] [27210] [INFO] Listening at: http://127.0.0.1:8000 (27210)
+[2021-03-06 10:07:46 +0000] [27210] [INFO] Using worker: sync
+[2021-03-06 10:07:46 +0000] [27213] [INFO] Booting worker with pid: 27213
+Not Found: /api/jsonws/invoke
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /solr/admin/info/system
+Not Found: /index.php
+Not Found: /wp-content/plugins/wp-file-manager/readme.txt
+Not Found: /console/
+Not Found: /Autodiscover/Autodiscover.xml
+Not Found: /_ignition/execute-solution
+Not Found: /incl/image_test.shtml
+Not Found: /shell
+Not Found: /favicon.ico
+Not Found: /hudson
+[2021-03-06 14:18:40 +0000] [27210] [INFO] Handling signal: term
+[2021-03-06 14:18:40 +0000] [27213] [INFO] Worker exiting (pid: 27213)
+Creating structure...
+Test1 discounting_variables.sas
+Test1 haircut_CPUFPsB.sas
+Test2 usecured_recovery_rate_UdAmQxI.sas
+Test2 haircut_L4Axtot.sas
+Writing xml...
+Encapsulating in egp...
+Creating structure...
+Test1 discounting_variables.sas
+Test1 haircut_CPUFPsB.sas
+Test2 usecured_recovery_rate_UdAmQxI.sas
+Test2 haircut_L4Axtot.sas
+Writing xml...
+Encapsulating in egp...
+Creating structure...
+Test1 haircut_E9yASOC.sas
+Test1 discounting_variables_r3QEcfw.sas
+Test2 user_config_EbKSId2.sas
+Test2 usecured_recovery_rate_lEuEBe5.sas
+Writing xml...
+Encapsulating in egp...
+[2021-03-06 14:18:40 +0000] [27210] [INFO] Shutting down: Master
+[2021-03-06 14:18:40 +0000] [31077] [INFO] Starting gunicorn 20.0.4
+[2021-03-06 14:18:40 +0000] [31077] [INFO] Listening at: http://127.0.0.1:8000 (31077)
+[2021-03-06 14:18:40 +0000] [31077] [INFO] Using worker: sync
+[2021-03-06 14:18:40 +0000] [31080] [INFO] Booting worker with pid: 31080
