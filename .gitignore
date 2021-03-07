@@ -7,3 +7,6 @@ prod_settings.py
 
 FirstProject/files/*
 __pycache__/*
+
+nano.save
+default
